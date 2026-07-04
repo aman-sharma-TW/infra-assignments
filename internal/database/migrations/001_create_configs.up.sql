@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS configs (
+    id         VARCHAR(255) PRIMARY KEY,
+    host       VARCHAR(255) NOT NULL,
+    port       INTEGER NOT NULL CHECK (port >= 1 AND port <= 65535),
+    app_name   VARCHAR(255) NOT NULL,
+    log_level  VARCHAR(10) NOT NULL CHECK (log_level IN ('DEBUG', 'INFO', 'WARN', 'ERROR')),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
